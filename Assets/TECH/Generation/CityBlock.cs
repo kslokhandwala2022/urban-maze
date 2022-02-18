@@ -38,7 +38,9 @@ public class CityBlock : MonoBehaviour
     void generateBuildings()
     {
         int buildingNumber = (int) (buildingDensity * blockScale.x * blockScale.z);
-        Debug.Log(buildingNumber + " buildings");
+        //int buildingNumber = (int)(buildingDensity * Mathf.Max(blockScale.x, blockScale.z));
+
+        //Debug.Log(buildingNumber + " buildings");
         for (int i = 0; i < buildingNumber; i++)
         {
             //ORDER HERE CHANGES EFFECT GREATLY
@@ -55,6 +57,7 @@ public class CityBlock : MonoBehaviour
     {
         blockScale = transform.lossyScale;
         generateBuildings();
+        StaticBatchingUtility.Combine(gameObject);
     }
 
     // Update is called once per frame

@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6837129153746659018}
   - component: {fileID: 6837129153746659017}
   - component: {fileID: 6837129153746659016}
-  - component: {fileID: 6837129153746659127}
   - component: {fileID: 6837129153746659019}
   m_Layer: 0
   m_Name: BUILDING
@@ -83,19 +82,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6837129153746659127
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6837129153746659126}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6837129153746659019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,3 +95,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabBlock: {fileID: 7973456293563246588, guid: ba6bfe00ae6e36c48a17a4dd9c75cdd3, type: 3}
+  prefabWindow: {fileID: 0}

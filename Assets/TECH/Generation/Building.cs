@@ -12,15 +12,9 @@ public class Building : MonoBehaviour
     public static bool hasWindow = false;
     public static float windowBorder = .1f;
     public GameObject prefabBlock;
+    public GameObject prefabWindow;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        //prefabBlock = Instantiate(gameObject);
-        //Build(Vector3.zero);
-    }
-
+    #region Build function and overloads
     /**
      * Build and instantiate given location
      */
@@ -48,19 +42,19 @@ public class Building : MonoBehaviour
     {
         transform.position = position;
         Transform buildingBlock = transform;
-        //initial block
         ScaleRandomly(buildingBlock, Vector2.Min(maxScale, Vector2.one * scale));
 
         for (int i = 0; i < levels; i++)
         {
             buildingBlock = Instantiate(prefabBlock, buildingBlock).transform;
             ScaleRandomly(buildingBlock);
-            //scale the block first
             PlaceBlock(buildingBlock);
-            //based on values, place the block
         }
     }
 
+    #endregion
+
+    #region Helper functions
     void ScaleRandomly(Transform res, float scaleFactor = 1)
     {
         float x = Random.value / 2 + .4f;
@@ -83,13 +77,22 @@ public class Building : MonoBehaviour
         float x = parent.position.x + (Random.Range(-1, 2) * (parent.lossyScale.x - res.lossyScale.x) / 2);
         float z = parent.position.z + (Random.Range(-1, 2) * (parent.lossyScale.z - res.lossyScale.z) / 2);
         float y = parent.position.y + parent.lossyScale.y / 2 + res.lossyScale.y / 2;
-        //res.position = new Vector3(x, y, z);
         res.position = new Vector3(x, y, z);
     }
 
-    // Update is called once per frame
-    void Update()
+    #endregion
+
+    #region window Placement
+    void PlaceWindows(Transform res)
     {
-        
+        //create a grid of windows based on
+        //x/y scale, z/y scale
+
+
+
     }
+
+    #endregion
+
+
 }
