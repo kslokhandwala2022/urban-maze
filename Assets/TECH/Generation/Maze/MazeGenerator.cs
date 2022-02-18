@@ -10,16 +10,18 @@ public class MazeGenerator : MonoBehaviour
     private const int gridSize = 10; //this will come from maze object soon
     [SerializeField] private Tile tile;
     [SerializeField] private List<Tile> tiles;
+    IMaze maze;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        maze = new DFSMaze();
         //StartCoroutine( DebugMaze() );
         ReadMaze();
     }
 
-    void InitMaze()
+    void InitTiles()
     {
         //for now draw grid
         for (int i = 0; i < gridSize; i++)
@@ -33,67 +35,39 @@ public class MazeGenerator : MonoBehaviour
 
     void ReadMaze()
     {
-        InitMaze();
-        DFSMaze.generateMaze(gridSize);
+        InitTiles();
+        maze.GenerateMaze(gridSize);
         for (int i = 0; i < gridSize * gridSize; i++)
         {
-            DFSMaze.Cell cell = DFSMaze.grid[i];
-            Tile currentTile = tiles[cell.Pos];
-            currentTile.SetWalls(cell.Walls);
-            currentTile.SetVisited(true);
-
+            Cell cell = maze.grid[i];
+            tiles[cell.Pos].ReadCell(cell.Walls);
         }
     }
 
     IEnumerator DebugMaze()
     {
-        InitMaze();
-        DFSMaze.size = gridSize;
-        DFSMaze.init(gridSize);
+        InitTiles();
+        tiles[maze.Init(gridSize)].SetVisited(true);
 
-        //initial cell, for now, 0, 0
-        DFSMaze.Cell initial = DFSMaze.grid[0];
-
-        initial.isVisited = true;
-        tiles[initial.Pos].SetVisited(true);
-        DFSMaze.stack.Push(initial);
-
-        DFSMaze.Cell currentCell;
-        int neighbor;
-        while (DFSMaze.stack.Count > 0)
+        while (true)
         {
-            currentCell = DFSMaze.stack.Pop();
-            neighbor = currentCell.getNeighbor();
+            int[] indices = maze.Step(); //get neighborIndex and currentIndex from step
+            if (indices.Length < 1) break;
 
-            //to see currlocation
-            Tile currentTile = tiles[currentCell.Pos];
-            currentTile.MarkLocated(true);
+            tiles[indices[0]].MarkLocated(true);
 
-            if (neighbor > 0)//has a valid neighbor
+            if (indices.Length > 1)
             {
-                //Debug.Log("At " + currentCell.Pos + " going to :" + neighbor);
-                DFSMaze.stack.Push(currentCell);
-                DFSMaze.removeWall(currentCell, DFSMaze.grid[neighbor]);
-                tiles[neighbor].SetWalls(currentCell.Walls);
-
-                DFSMaze.Cell neighborCell = DFSMaze.grid[neighbor];
-                neighborCell.isVisited = true;
-                DFSMaze.stack.Push(neighborCell);
-
-                //match tiles to changes
-                currentTile.SetWalls(currentCell.Walls);
-                tiles[neighbor].SetWalls(neighborCell.Walls);
-                tiles[neighbor].SetVisited(true);
-
+                foreach (int position in indices)
+                {
+                    tiles[position].ReadCell(maze.grid[position].Walls);
+                }
             }
-            yield return new WaitForSeconds(0.1f);
-            currentTile.MarkLocated(false);
+
+            yield return new WaitForSeconds(0.01f);
+            tiles[indices[0]].MarkLocated(false);
         }
-
         Debug.Log("Maze generation finished");
-        //ReadMaze();
-        
-
     }
 
 }

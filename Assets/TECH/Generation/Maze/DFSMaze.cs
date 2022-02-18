@@ -2,96 +2,76 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class DFSMaze
+public class DFSMaze : IMaze
 {
+    #region Variables
+
     const int WALL = 0;
     const int CLEAR = 1;
     const int CORRECT = 2;
 
-    public class Cell
+    public Cell[] grid { get; set; }
+    public int size;
+    public Stack<Cell> stack;
+
+    #endregion
+
+
+    #region Required Functions
+    public void GenerateMaze(int gridSize)
     {
-        public Cell(int position, int[] walls)
-        {
-            Walls = walls;
-            Pos = position;
-            isVisited = false;
-        }
-        public int[] Walls;
-        public int Pos;
-        public bool isVisited;
-
-        //check neighbors, return wall to remove
-        public int getNeighbor()
-        {
-            // up down +- size
-            //left right +- 1
-            List<int> walls = new List<int>();
-
-            for (int i = 0; i < 4; i++)
-            {
-                int neighborIndex = Pos + (i > 1 ? -1 : 1) * ( (i + 1) % 2 * size + (i % 2) );
-                
-                if (neighborIndex > 0 && 
-                    neighborIndex < grid.Length && //for array out of bounds edge cases
-                    ((neighborIndex + Pos + 1) % (2 * size) != 0) && //for the looping edge case (because I made this a 1D array)
-                    !grid[neighborIndex].isVisited)
-                {
-                    walls.Add(neighborIndex);
-                }
-            }
-            if (walls.Count > 0)
-                return walls[Random.Range(0, walls.Count)];
-            else
-                return -1;
-        }
+        Init(gridSize);
+        while (Step().Length > 0) ;
     }
 
-    public static Cell[] grid;
-    public static int size;
-    public static Stack<Cell> stack;
-
-
-    public static void generateMaze(int gridSize)
+    public int[] Step()
     {
-        size = gridSize;
-        init(gridSize);
-
-        //initial cell, for now, 0, 0
-        Cell initial = grid[0];
-        initial.isVisited = true;
-        stack.Push(initial);
-
-        Cell currentCell;
-        int neighbor;
-
-        while (stack.Count > 0) {
-
-            currentCell = stack.Pop();
-            neighbor = currentCell.getNeighbor();
-            if(neighbor > 0)//has a valid neighbor
+        int[] res = new int[] { };
+        if (stack.Count > 0)
+        {
+            Cell currentCell = stack.Pop();
+            int neighbor = GetNeighbor(currentCell.Pos);
+            if (neighbor > -1)//has a valid neighbor
             {
-
                 stack.Push(currentCell);
-                removeWall(currentCell, grid[neighbor]);
+                RemoveWall(currentCell, grid[neighbor]);
                 grid[neighbor].isVisited = true;
                 stack.Push(grid[neighbor]);
+                res = new int[] { currentCell.Pos, neighbor };
+            }
+            else
+            {
+                res = new int[] { currentCell.Pos };
             }
         }
+        return res;
     }
 
-    public static void init(int gridSize)
+    public int Init(int gridSize)
     {
         grid = new Cell[gridSize * gridSize];
+        size = gridSize;
         stack = new Stack<Cell>();
+
         for (int i = 0; i < gridSize * gridSize; i++)
         {
             grid[i] = new Cell(i, new int[] { WALL, WALL, WALL, WALL });
         }
 
+        //initial cell, for now, 0, 0
+        int initalPos = 35;
+        Cell initial = grid[initalPos];
+        initial.isVisited = true;
+        stack.Push(initial);
+        return initalPos;
     }
 
+    #endregion
+
+
+    #region Helper Functions
     //up right down left
-    public static void removeWall(Cell a, Cell b)
+    public void RemoveWall(Cell a, Cell b)
     {
         int diff = b.Pos - a.Pos;
         int wallToRemove = Mathf.Abs(diff) % size + (diff > 0 ? 2 : 0);
@@ -106,6 +86,32 @@ public static class DFSMaze
         b.Walls[(wallToRemove + 2) % 4] = CLEAR;
     }
 
+    //check neighbors, return wall to remove
+    public int GetNeighbor(int currentPosition)
+    {
+        // up down +- size
+        //left right +- 1
+        List<int> walls = new List<int>();
+
+        for (int i = 0; i < 4; i++)
+        {
+            int neighborIndex = currentPosition + (i > 1 ? -1 : 1) * ((i + 1) % 2 * size + (i % 2));
+
+            if (neighborIndex > -1 &&
+                neighborIndex < grid.Length && //for array out of bounds edge cases
+                ((neighborIndex + currentPosition + 1) % (2 * size) != 0) && //for the looping edge case (because I made this a 1D array)
+                !grid[neighborIndex].isVisited)
+            {
+                walls.Add(neighborIndex);
+            }
+        }
+        if (walls.Count > 0)
+            return walls[Random.Range(0, walls.Count)];
+        else
+            return -1;
+    }
+
+    #endregion
 
 
     //NOtes for future

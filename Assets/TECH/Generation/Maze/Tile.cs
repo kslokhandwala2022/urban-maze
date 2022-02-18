@@ -41,6 +41,12 @@ public class Tile : MonoBehaviour
         }
     }
 
+    public  void ReadCell(int[] walls)
+    {
+        SetWalls(walls);
+        SetVisited(true);
+    }
+
     public void MarkLocated(bool visit)
     {
         Color before = road.GetComponent<Renderer>().material.color;
