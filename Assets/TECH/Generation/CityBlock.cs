@@ -35,7 +35,7 @@ public class CityBlock : MonoBehaviour
 
     }
 
-    void generateBuildings()
+    public void generateBuildings()
     {
         int buildingNumber = (int) (buildingDensity * blockScale.x * blockScale.z);
         //int buildingNumber = (int)(buildingDensity * Mathf.Max(blockScale.x, blockScale.z));
@@ -49,6 +49,7 @@ public class CityBlock : MonoBehaviour
             b.transform.parent = transform;
             //b.Build(new Vector3(transform.position.x, transform.position.y + .5f * blockScale.y, transform.position.z));
         }
+        StaticBatchingUtility.Combine(gameObject);
     }
 
 
@@ -57,7 +58,7 @@ public class CityBlock : MonoBehaviour
     {
         blockScale = transform.lossyScale;
         generateBuildings();
-        StaticBatchingUtility.Combine(gameObject);
+        
     }
 
     // Update is called once per frame

@@ -14,13 +14,17 @@ public class DFSMaze : IMaze
     public int size;
     public Stack<Cell> stack;
 
+    //For start and end positions
+    private int maxStackSize = 0;
+    public Cell origin { get; set; }
+    public Cell destination { get; set; }
     #endregion
 
 
     #region Required Functions
-    public void GenerateMaze(int gridSize)
+    public void GenerateMaze(Game game)
     {
-        Init(gridSize);
+        Init(game);
         while (Step().Length > 0) ;
     }
 
@@ -30,6 +34,7 @@ public class DFSMaze : IMaze
         if (stack.Count > 0)
         {
             Cell currentCell = stack.Pop();
+            HandleEndBlock(stack.Count, currentCell);
             int neighbor = GetNeighbor(currentCell.Pos);
             if (neighbor > -1)//has a valid neighbor
             {
@@ -47,8 +52,12 @@ public class DFSMaze : IMaze
         return res;
     }
 
-    public int Init(int gridSize)
+    public int Init(Game game)
     {
+        if(game.useSeed) Random.InitState(game.seed);
+
+
+        int gridSize = game.mazeSize;
         grid = new Cell[gridSize * gridSize];
         size = gridSize;
         stack = new Stack<Cell>();
@@ -59,11 +68,11 @@ public class DFSMaze : IMaze
         }
 
         //initial cell, for now, 0, 0
-        int initalPos = 35;
-        Cell initial = grid[initalPos];
-        initial.isVisited = true;
-        stack.Push(initial);
-        return initalPos;
+        int endPos = Random.Range(0, game.mazeSize * game.mazeSize);
+        destination = grid[endPos];
+        destination.isVisited = true;
+        stack.Push(destination);
+        return endPos;
     }
 
     #endregion
@@ -84,6 +93,7 @@ public class DFSMaze : IMaze
 
         a.Walls[wallToRemove] = CLEAR;
         b.Walls[(wallToRemove + 2) % 4] = CLEAR;
+        b.SolutionDirection = (wallToRemove + 2) % 4;
     }
 
     //check neighbors, return wall to remove
@@ -109,6 +119,23 @@ public class DFSMaze : IMaze
             return walls[Random.Range(0, walls.Count)];
         else
             return -1;
+    }
+
+    //update end block
+    public void HandleEndBlock(int stackSize, Cell current)
+    {
+        if(stackSize > maxStackSize)
+        {
+            maxStackSize = stackSize;
+            origin = current;
+        }
+        current.DistanceFromOrigin = stackSize;
+    }
+
+    //set finish direction
+    public void SetFinishDirection(int pos)
+    {
+        //check neighbors
     }
 
     #endregion

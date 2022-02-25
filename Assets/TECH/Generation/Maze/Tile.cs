@@ -5,10 +5,11 @@ using UnityEngine;
 public class Tile : MonoBehaviour
 {
     public CityBlock[] Walls;
-    public GameObject road;
-    public Vector2 pos;
-    public int directionToFinish;
-
+    public GameObject Road;
+    public GameObject Arrow;
+    public Vector2 Pos;
+    public int DirectionToFinish;
+    public int DistanceFromFinish;
 
 
     //for grid
@@ -18,14 +19,15 @@ public class Tile : MonoBehaviour
     public bool isLocated;
     private bool isVisited;
     Color ogColor;
+    [SerializeField] Game game;
     [SerializeField] Color visitColor;
     [SerializeField] Color locateColor;
 
     public void SetVisited(bool visited)
     {
         isVisited = visited;
-        Color before = road.GetComponent<Renderer>().material.color;
-        road.GetComponent<Renderer>().material.color = new Color(before.r + .2f, before.g - .2f, before.b, before.a);
+        Color before = Road.GetComponent<Renderer>().material.color;
+        Road.GetComponent<Renderer>().material.color = new Color(before.r + .2f, before.g, before.b, before.a);
     }
 
     public void SetWalls(int[] walls)
@@ -36,33 +38,70 @@ public class Tile : MonoBehaviour
             if(walls[i] > 1)
             {
                 Debug.Log(i + " wall : " +  walls[i]);
-                directionToFinish = i;
+                DirectionToFinish = i;
             }
         }
     }
 
-    public  void ReadCell(int[] walls)
+    public void ReadCell(Cell cell)
     {
-        SetWalls(walls);
+        SetWalls(cell.Walls);
         SetVisited(true);
+        DistanceFromFinish = cell.DistanceFromOrigin;
+        Arrow.SetActive(game.community > Random.Range(0, 100));
+        //Debug
+        if(game.debug)
+        {
+            Color before = Road.GetComponent<Renderer>().material.color;
+            Road.GetComponent<Renderer>().material.color = new Color(before.r, DistanceFromFinish / 70f, before.b, before.a);
+        }
+        SetArrow(cell.SolutionDirection);
     }
 
     public void MarkLocated(bool visit)
     {
-        Color before = road.GetComponent<Renderer>().material.color;
+        Color before = Road.GetComponent<Renderer>().material.color;
         if (visit)
         {
-            road.GetComponent<Renderer>().material.color = new Color(before.r + .2f, before.g - .2f, 1.0f, before.a);
+            Road.GetComponent<Renderer>().material.color = new Color(before.r + .2f, before.g, 1.0f, before.a);
         }
         else
         {
-            road.GetComponent<Renderer>().material.color = new Color(before.r, before.g, ogColor.b, ogColor.a);
+            Road.GetComponent<Renderer>().material.color = new Color(before.r, before.g, ogColor.b, ogColor.a);
         }
+    }
+
+    public void SetArrow(int direction)
+    {
+        Vector3 res = Vector3.zero;
+        switch(direction)
+        {
+            case 1:
+                res.x = 0;
+                break;
+            case 2:
+                res.y = 90;
+                break;
+            case 3:
+                res.x = 180;
+                break;
+            case 0:
+                res.x = 180;
+                res.y = 90;
+                break;
+            default:
+                Debug.Log("invalid direction");
+                res.x = -90;
+                break;
+
+        }
+        Arrow.transform.rotation = Quaternion.Euler(res);
+        //arrow.transform.LookAt(res * 100);
     }
 
     private void Start()
     {
-        ogColor = road.GetComponent<Renderer>().material.color;
+        ogColor = Road.GetComponent<Renderer>().material.color;
         //SetVisited(true);
     }
 

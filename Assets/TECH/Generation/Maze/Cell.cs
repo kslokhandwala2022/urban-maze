@@ -8,5 +8,7 @@ public class Cell
     }
     public int[] Walls;
     public int Pos;
+    public int DistanceFromOrigin = -1;
+    public int SolutionDirection;
     public bool isVisited;
 }

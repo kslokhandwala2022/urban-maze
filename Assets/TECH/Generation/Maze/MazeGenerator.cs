@@ -6,27 +6,32 @@ using UnityEngine;
 public class MazeGenerator : MonoBehaviour
 {
 
-    private int scale;
-    private const int gridSize = 10; //this will come from maze object soon
     [SerializeField] private Tile tile;
     [SerializeField] private List<Tile> tiles;
     IMaze maze;
+    [SerializeField] private Game game;
 
 
     // Start is called before the first frame update
     void Start()
     {
         maze = new DFSMaze();
-        //StartCoroutine( DebugMaze() );
-        ReadMaze();
+        if( game.debug )
+        {
+            StartCoroutine( DebugMaze() );
+        }
+        else
+        {
+            ReadMaze();
+        }
     }
 
     void InitTiles()
     {
         //for now draw grid
-        for (int i = 0; i < gridSize; i++)
+        for (int i = 0; i < game.mazeSize; i++)
         {
-            for (int j = 0; j < gridSize; j++)
+            for (int j = 0; j < game.mazeSize; j++)
             {
                 tiles.Add( Instantiate(tile, new Vector3(i * Tile.length, 0, j * Tile.length), Quaternion.identity) );
             }
@@ -36,18 +41,21 @@ public class MazeGenerator : MonoBehaviour
     void ReadMaze()
     {
         InitTiles();
-        maze.GenerateMaze(gridSize);
-        for (int i = 0; i < gridSize * gridSize; i++)
+        maze.GenerateMaze(game);
+        tiles[maze.destination.Pos].SetVisited(true);
+
+        for (int i = 0; i < game.mazeSize * game.mazeSize; i++)
         {
             Cell cell = maze.grid[i];
-            tiles[cell.Pos].ReadCell(cell.Walls);
+            tiles[cell.Pos].ReadCell(cell);
         }
+        tiles[maze.origin.Pos].SetVisited(true);
     }
 
     IEnumerator DebugMaze()
     {
         InitTiles();
-        tiles[maze.Init(gridSize)].SetVisited(true);
+        tiles[maze.Init(game)].SetVisited(true);
 
         while (true)
         {
@@ -60,13 +68,15 @@ public class MazeGenerator : MonoBehaviour
             {
                 foreach (int position in indices)
                 {
-                    tiles[position].ReadCell(maze.grid[position].Walls);
+                    tiles[position].ReadCell(maze.grid[position]);
                 }
             }
 
             yield return new WaitForSeconds(0.01f);
             tiles[indices[0]].MarkLocated(false);
         }
+
+
         Debug.Log("Maze generation finished");
     }
 

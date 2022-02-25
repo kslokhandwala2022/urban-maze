@@ -5,9 +5,11 @@ using UnityEngine;
 public interface IMaze
 {
     Cell[] grid { get; set; }
-    public void GenerateMaze(int gridSize);
+    Cell destination { get; set; }
+    Cell origin { get; set; }
+    public void GenerateMaze(Game game);
 
     public int[] Step();
 
-    public int Init(int gridSize);
+    public int Init(Game game);
 }
