@@ -300,6 +300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tile: {fileID: 1462061340560798999, guid: 2941aab9ccc868c49b0c66c24f761c7f, type: 3}
   tiles: []
+  game: {fileID: 11400000, guid: 46bed13fcabbdf64589cf499af31748b, type: 2}
 --- !u!4 &102991407
 Transform:
   m_ObjectHideFlags: 0
