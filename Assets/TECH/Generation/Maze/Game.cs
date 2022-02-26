@@ -8,6 +8,7 @@ public class Game : ScriptableObject
     public int mazeSize;
     public float wealth;
     public float community;
+    public float pickupChance;
     public int seed;
     public bool useSeed;
     public bool debug = true;

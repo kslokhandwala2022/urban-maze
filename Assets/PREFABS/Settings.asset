@@ -15,6 +15,7 @@ MonoBehaviour:
   mazeSize: 12
   wealth: 10
   community: 10
+  pickupChance: 0
   seed: 42
   useSeed: 0
   debug: 0

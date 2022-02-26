@@ -83,11 +83,10 @@ public class Tile : MonoBehaviour
                 res.y = 90;
                 break;
             case 3:
-                res.x = 180;
+                res.y = 180;
                 break;
             case 0:
-                res.x = 180;
-                res.y = 90;
+                res.y = -90;
                 break;
             default:
                 Debug.Log("invalid direction");
@@ -95,6 +94,7 @@ public class Tile : MonoBehaviour
                 break;
 
         }
+        
         Arrow.transform.rotation = Quaternion.Euler(res);
         //arrow.transform.LookAt(res * 100);
     }
