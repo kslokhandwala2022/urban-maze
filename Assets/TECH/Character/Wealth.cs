@@ -15,12 +15,14 @@ public class Wealth : MonoBehaviour
 
     public void Start()
     {
-        initialSpeed = GetComponent<ThirdPersonMovement>().speed;
+        // initialSpeed = GetComponent<ThirdPersonMovement>().speed;
+        initialSpeed = GetComponent<PlayerMovementInputController>().speed;
         animator = GetComponent<Animator>();
     }
 
     public void updateSpeed() {
-        GetComponent<ThirdPersonMovement>().speed = initialSpeed + coeff * currentWealth;
+        // GetComponent<ThirdPersonMovement>().speed = initialSpeed + coeff * currentWealth;
+        GetComponent<PlayerMovementInputController>().speed = initialSpeed + coeff * currentWealth;
         currentWealth += 1;
 
         animator.SetBool("Picking", true);
