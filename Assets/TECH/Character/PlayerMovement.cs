@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpHeight = 2f;
 
     public Transform groundCheck;
-    public float groundDistance = 0.4f;
+    public float groundDistance = 0.1f;
     public LayerMask groundMask;
 
     RaycastHit rayHit;
@@ -27,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
     bool isRunning;
     bool isMoving;
     bool isGrounded;
+    bool isJumping;
+    bool isFalling;
 
 #if ENABLE_INPUT_SYSTEM
     InputAction movement;
@@ -87,6 +89,12 @@ public class PlayerMovement : MonoBehaviour
 
         if (isGrounded && velocity.y < 0)
         {
+            if (isFalling) {
+                isFalling = false;
+                animator.SetBool("Falling", false);
+                isJumping = false;
+            }
+
             velocity.y = -2f;
         }
 
@@ -97,6 +105,8 @@ public class PlayerMovement : MonoBehaviour
         isRunning = speed > runningThreashold;
 
         animator.SetBool("Moving", isMoving);
+        animator.SetBool("Grounded", isGrounded);
+
         if (isMoving && isRunning)
         {
             animator.SetBool("Running", true);
@@ -110,10 +120,19 @@ public class PlayerMovement : MonoBehaviour
 
         if(jumpPressed && isGrounded)
         {
+            isJumping = true;
+            animator.SetBool("Jumping", true);
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
 
         velocity.y += gravity * Time.deltaTime;
+
+        if (isJumping && velocity.y < 0.1)
+        {
+            isFalling = true;
+            animator.SetBool("Jumping", false);
+            animator.SetBool("Falling", true);
+        }
 
         controller.Move(velocity * Time.deltaTime);
     }
