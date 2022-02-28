@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Pickup : MonoBehaviour
 {
+    private void Update()
+    {
+        transform.Rotate(Vector3.up * (.2f));
+    }
 
     private void OnTriggerEnter(Collider other)
     {

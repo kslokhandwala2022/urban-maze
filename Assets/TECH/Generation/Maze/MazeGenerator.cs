@@ -8,6 +8,9 @@ public class MazeGenerator : MonoBehaviour
 
     [SerializeField] private Tile tile;
     [SerializeField] private List<Tile> tiles;
+    [SerializeField] private GameObject player;
+    [SerializeField] private MazeUIManager ui;
+
     IMaze maze;
     [SerializeField] private Game game;
 
@@ -24,6 +27,18 @@ public class MazeGenerator : MonoBehaviour
         {
             ReadMaze();
         }
+        //place player at start square
+        player.transform.position = tiles[maze.origin.Pos].transform.position;
+        tiles[maze.destination.Pos].EndZone.SetActive(true);
+        //init player speed
+        player.GetComponent<PlayerMovement>().speed = game.wealth / 10;
+        ui.InitGUI();
+
+    }
+
+    private void Update()
+    {
+        ui.UpdateTimer();
     }
 
     void InitTiles()

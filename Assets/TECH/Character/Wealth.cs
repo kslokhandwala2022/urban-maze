@@ -5,24 +5,25 @@ using UnityEngine;
 public class Wealth : MonoBehaviour
 {
 
-    public int currentWealth = 1;
-    public float coeff = 1.0f;
+    public int currentWealth = 0;
+    public float coeff = .3f;
 
     private float initialSpeed;
 
     private bool picking;
     private Animator animator;
+    private PlayerMovement playerMovement;
 
     public void Start()
     {
         // initialSpeed = GetComponent<ThirdPersonMovement>().speed;
-        initialSpeed = GetComponent<PlayerMovement>().speed;
+        playerMovement = GetComponent<PlayerMovement>();
         animator = GetComponent<Animator>();
     }
 
     public void updateSpeed() {
         // GetComponent<ThirdPersonMovement>().speed = initialSpeed + coeff * currentWealth;
-        GetComponent<PlayerMovement>().speed = initialSpeed + coeff * currentWealth;
+        playerMovement.speed += coeff;
         currentWealth += 1;
 
         animator.SetBool("Picking", true);

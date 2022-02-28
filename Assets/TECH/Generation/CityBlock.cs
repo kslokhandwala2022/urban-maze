@@ -49,7 +49,7 @@ public class CityBlock : MonoBehaviour
             b.transform.parent = transform;
             //b.Build(new Vector3(transform.position.x, transform.position.y + .5f * blockScale.y, transform.position.z));
         }
-        StaticBatchingUtility.Combine(gameObject);
+        //StaticBatchingUtility.Combine(gameObject);
     }
 
 

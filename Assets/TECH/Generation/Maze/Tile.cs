@@ -7,6 +7,9 @@ public class Tile : MonoBehaviour
     public CityBlock[] Walls;
     public GameObject Road;
     public GameObject Arrow;
+    public GameObject Coin;
+
+    public GameObject EndZone;
     public Vector2 Pos;
     public int DirectionToFinish;
     public int DistanceFromFinish;
@@ -49,6 +52,7 @@ public class Tile : MonoBehaviour
         SetVisited(true);
         DistanceFromFinish = cell.DistanceFromOrigin;
         Arrow.SetActive(game.community > Random.Range(0, 100));
+        Coin.SetActive(game.wealth > Random.Range(0, 100));
         //Debug
         if(game.debug)
         {

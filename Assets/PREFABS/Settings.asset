@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a38622b2b6792e44488fb5f71b3ce98e, type: 3}
   m_Name: Settings
   m_EditorClassIdentifier: 
-  mazeSize: 12
-  wealth: 10
-  community: 10
-  pickupChance: 0
+  mazeSize: 10
+  wealth: 20
+  community: 40
+  playThrough: Community Leader
   seed: 42
   useSeed: 0
-  debug: 1
+  debug: 0
