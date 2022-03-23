@@ -13,7 +13,7 @@ public class Pickup : MonoBehaviour
     {
         if (other.tag == "Player") {
 
-            other.GetComponent<Wealth>().updateSpeed();
+            //other.GetComponent<Wealth>().updateSpeed();
             Destroy(this.gameObject);
         
         }

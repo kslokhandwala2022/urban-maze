@@ -874,6 +874,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pickup
       objectReference: {fileID: 0}
+    - target: {fileID: 3882989318650728263, guid: 6cf10379b9910c0458d653c87fd230fc, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cf10379b9910c0458d653c87fd230fc, type: 3}
 --- !u!1 &689677241655256465 stripped
