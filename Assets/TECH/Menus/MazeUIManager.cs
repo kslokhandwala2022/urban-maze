@@ -84,7 +84,8 @@ public class MazeUIManager : MonoBehaviour
     /// <param name="size"></param>
     public void SetupMiniMap(Cell[] grid, int size)
     {
-
+        Debug.Log("JOSIAHHHHHHHH YESSS");
+        Debug.Log(grid);
     }
 
 
