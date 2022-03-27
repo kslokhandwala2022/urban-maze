@@ -36,7 +36,7 @@ public class MazeUIManager : MonoBehaviour
         if(timeStarted)
         {
             timeVal += Time.deltaTime;
-            timer.text = timeToString(timeVal);
+            timer.text = TimeToString(timeVal);
             
         }
         else if (Input.GetKeyDown(KeyCode.Space))
@@ -54,11 +54,11 @@ public class MazeUIManager : MonoBehaviour
     {
         end.SetActive(true);
         timeStarted = false;
-        endContent.text = "Total Time: " + timeToString(timeVal) + 
+        endContent.text = "Total Time: " + TimeToString(timeVal) + 
             "\nPlayMode: " + game.playThrough;
     }
 
-    private string timeToString(float time)
+    private string TimeToString(float time)
     {
         float minutes = Mathf.Floor(timeVal / 60);
         float seconds = Mathf.RoundToInt(timeVal % 60);
@@ -75,6 +75,18 @@ public class MazeUIManager : MonoBehaviour
         }
         return min + ":" + sec;
     }
+
+    /// <summary>
+    /// HELLO JOSIAHHH 
+    /// You can use this guy down there 
+    /// </summary>
+    /// <param name="grid"></param>
+    /// <param name="size"></param>
+    public void SetupMiniMap(Cell[] grid, int size)
+    {
+
+    }
+
 
     public void ReturntoMenu()
     {

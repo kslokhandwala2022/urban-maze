@@ -33,6 +33,7 @@ public class MazeGenerator : MonoBehaviour
         //init player speed
         player.GetComponent<PlayerMovement>().speed = game.playerWealth / 10;
         ui.InitGUI();
+        ui.SetupMiniMap(maze.grid, maze.size);
 
     }
 
