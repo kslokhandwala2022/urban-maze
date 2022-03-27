@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class ThirdPersonMovement : MonoBehaviour
 {
+
+    //Base Movement
+    [Header("Movement")]
     public CharacterController controller;
     public float speed = 6f;
     public float turnSmoothTime = 0.1f;
     private float turnSmoothVelocity;
     public Transform cam;
 
+
+    //Game
+    [Header("Game")]
+    public Game game;
+    public float wealthToSpeed = 0.1f;
+
+    //animation
+    [Header("Health Settings")]
+    Animator animator;
     public float movingThreshold = 0.25f;
     public float runningThreshold = 10f;
-    Animator animator;
 
     private void Start()
     {
@@ -37,7 +48,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
             //move in direction of player orientation
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            Vector3 move = moveDir.normalized * speed;
+            Vector3 move = moveDir.normalized * (speed + (wealthToSpeed * game.wealth));
             controller.Move(move * Time.deltaTime);
 
             animator.SetBool("Moving", move.magnitude > movingThreshold);

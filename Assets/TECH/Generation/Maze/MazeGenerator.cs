@@ -39,6 +39,7 @@ public class MazeGenerator : MonoBehaviour
     private void Update()
     {
         ui.UpdateTimer();
+        ui.UpdateWealth();
     }
 
     void InitTiles()

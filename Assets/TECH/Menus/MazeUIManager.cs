@@ -6,10 +6,14 @@ using TMPro;
 
 public class MazeUIManager : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI timer;
-    [SerializeField] TextMeshProUGUI content;
+
+    [SerializeField] TextMeshProUGUI endContent;
     [SerializeField] GameObject end;
     [SerializeField] Game game;
+
+    //UI
+    [SerializeField] TextMeshProUGUI wealthAmt;
+    [SerializeField] TextMeshProUGUI timer;
 
     private float timeVal;
     private string timerString;
@@ -23,7 +27,10 @@ public class MazeUIManager : MonoBehaviour
         end.SetActive(false);
     }
 
-
+    public void UpdateWealth()
+    {
+        wealthAmt.text = "" + game.wealth;
+    }
     public void UpdateTimer()
     {
         if(timeStarted)
@@ -47,7 +54,7 @@ public class MazeUIManager : MonoBehaviour
     {
         end.SetActive(true);
         timeStarted = false;
-        content.text = "Total Time: " + timeToString(timeVal) + 
+        endContent.text = "Total Time: " + timeToString(timeVal) + 
             "\nPlayMode: " + game.playThrough;
     }
 
