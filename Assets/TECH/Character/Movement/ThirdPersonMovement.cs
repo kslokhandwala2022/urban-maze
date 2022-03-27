@@ -48,7 +48,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
             //move in direction of player orientation
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            Vector3 move = moveDir.normalized * (speed + (wealthToSpeed * game.wealth));
+            Vector3 move = moveDir.normalized * (speed + (wealthToSpeed * game.playerWealth));
             controller.Move(move * Time.deltaTime);
 
             animator.SetBool("Moving", move.magnitude > movingThreshold);

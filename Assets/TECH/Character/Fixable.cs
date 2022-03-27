@@ -43,9 +43,9 @@ public class Fixable : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.E))
             {
-                if(game.wealth >= cost)
+                if(game.playerWealth >= cost)
                 {
-                    game.wealth -= cost;
+                    game.playerWealth -= cost;
                     SetFixed();
                 }
             }

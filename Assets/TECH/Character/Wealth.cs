@@ -19,7 +19,7 @@ public class Wealth : MonoBehaviour
     }
 
     public void updateSpeed() {
-        game.wealth++;
+        game.playerWealth++;
     }
 
     private void RevertPicking() { 

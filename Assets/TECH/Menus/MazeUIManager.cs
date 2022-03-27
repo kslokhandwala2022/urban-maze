@@ -29,7 +29,7 @@ public class MazeUIManager : MonoBehaviour
 
     public void UpdateWealth()
     {
-        wealthAmt.text = "" + game.wealth;
+        wealthAmt.text = "" + game.playerWealth;
     }
     public void UpdateTimer()
     {
