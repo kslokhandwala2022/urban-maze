@@ -8,6 +8,8 @@ public class Tile : MonoBehaviour
     public GameObject Road;
     public GameObject Arrow;
     public GameObject Coin;
+    public GameObject Fixable;
+
 
     public GameObject EndZone;
     public Vector2 Pos;
@@ -51,8 +53,8 @@ public class Tile : MonoBehaviour
         SetWalls(cell.Walls);
         SetVisited(true);
         DistanceFromFinish = cell.DistanceFromOrigin;
-        Arrow.SetActive(game.community > Random.Range(0, 100));
-        Coin.SetActive(game.wealth > Random.Range(0, 100));
+        Fixable.SetActive(game.fixableChance > Random.Range(0, 100));
+        Coin.SetActive(game.coinChance > Random.Range(0, 100));
         //Debug
         if(game.debug)
         {

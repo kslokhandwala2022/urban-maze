@@ -5,10 +5,7 @@ using UnityEngine;
 public class Wealth : MonoBehaviour
 {
 
-    public int currentWealth = 0;
-    public float coeff = .3f;
-
-    private float initialSpeed;
+    public Game game;
 
     private bool picking;
     private Animator animator;
@@ -22,12 +19,7 @@ public class Wealth : MonoBehaviour
     }
 
     public void updateSpeed() {
-        // GetComponent<ThirdPersonMovement>().speed = initialSpeed + coeff * currentWealth;
-        playerMovement.speed += coeff;
-        currentWealth += 1;
-
-        animator.SetBool("Picking", true);
-        Invoke("RevertPicking", 1);
+        game.playerWealth++;
     }
 
     private void RevertPicking() { 

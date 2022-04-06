@@ -31,14 +31,16 @@ public class MazeGenerator : MonoBehaviour
         player.transform.position = tiles[maze.origin.Pos].transform.position;
         tiles[maze.destination.Pos].EndZone.SetActive(true);
         //init player speed
-        player.GetComponent<PlayerMovement>().speed = game.wealth / 10;
+        player.GetComponent<PlayerMovement>().speed = game.playerWealth / 10;
         ui.InitGUI();
+        ui.SetupMiniMap(maze.grid, maze.size);
 
     }
 
     private void Update()
     {
         ui.UpdateTimer();
+        ui.UpdateWealth();
     }
 
     void InitTiles()
