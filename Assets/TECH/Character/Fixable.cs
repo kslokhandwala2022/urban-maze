@@ -73,6 +73,7 @@ public class Fixable : MonoBehaviour
 
     void SetFixed()
     {
+        game.numObjectsFixed++;
         modelBroken.SetActive(false);
         modelFixed.SetActive(true);
         interactbleText.gameObject.SetActive(false);

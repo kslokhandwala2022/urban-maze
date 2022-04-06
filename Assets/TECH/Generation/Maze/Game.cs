@@ -12,6 +12,7 @@ public class Game : ScriptableObject
 
     public float coinChance;
     public float fixableChance;
+    public int numObjectsFixed;
 
     public int seed;
     public bool useSeed;

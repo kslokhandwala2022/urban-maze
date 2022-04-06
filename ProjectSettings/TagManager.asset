@@ -14,11 +14,11 @@ TagManager:
   - UI
   - City
   - Ground
-  - ProjectionPlane
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Pickup
+  - Fixable
+  - NPC
+  - Building
   - 
   - 
   - 

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5895518375577363077}
   - component: {fileID: 5895518375577363076}
   - component: {fileID: 5895518375577363079}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: broken
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 5895518375799057467}
   - component: {fileID: 5895518375799057444}
   - component: {fileID: 5895518375799057464}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fixable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.2883341, y: 1, z: 1.1799915}
+  m_Size: {x: 1.7129699, y: 1, z: 1.6776146}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5895518375799057464
 MonoBehaviour:
@@ -170,7 +170,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5895518375946903463}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,7 +202,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5895518376576937296}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: fixed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -234,7 +234,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5895518376607828615}
   - component: {fileID: 5895518376607828613}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BillBoard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -280,7 +280,7 @@ GameObject:
   - component: {fileID: 5895518376655730798}
   - component: {fileID: 5895518376655730796}
   - component: {fileID: 5895518376655730799}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -490,9 +490,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8513424388201257645, guid: 88a91531e4ddcc3498ce84ae87602ced, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 88a91531e4ddcc3498ce84ae87602ced, type: 3}
       propertyPath: m_Name
       value: arrowman2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 88a91531e4ddcc3498ce84ae87602ced, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7750397243111347764, guid: 88a91531e4ddcc3498ce84ae87602ced, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88a91531e4ddcc3498ce84ae87602ced, type: 3}
@@ -555,6 +567,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: aae6767a3422d94429c60da0ac38de26, type: 3}
       propertyPath: m_Name
       value: arrow
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: aae6767a3422d94429c60da0ac38de26, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: aae6767a3422d94429c60da0ac38de26, type: 3}
       propertyPath: m_IsActive

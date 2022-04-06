@@ -76,18 +76,6 @@ public class MazeUIManager : MonoBehaviour
         return min + ":" + sec;
     }
 
-    /// <summary>
-    /// HELLO JOSIAHHH 
-    /// You can use this guy down there 
-    /// </summary>
-    /// <param name="grid"></param>
-    /// <param name="size"></param>
-    public void SetupMiniMap(Cell[] grid, int size)
-    {
-        Debug.Log("JOSIAHHHHHHHH YESSS");
-        Debug.Log(grid);
-    }
-
 
     public void ReturntoMenu()
     {
