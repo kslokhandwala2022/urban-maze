@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class Compass : MonoBehaviour
 {
@@ -28,6 +28,13 @@ public class Compass : MonoBehaviour
 
     void Update()
     {
+
+
+        Vector3 playerForward = Vector3.ProjectOnPlane(m_PlayerTransform.forward, Vector3.up);
+        float temp = Vector3.SignedAngle(playerForward, new Vector3(0, 0, -1), Vector3.up);
+        Debug.Log(temp);
+
+
         // this is all very WIP, and needs to be reworked
         foreach (var element in m_ElementsDictionnary)
         {
@@ -37,14 +44,13 @@ public class Compass : MonoBehaviour
 
             if (element.Value.IsDirection)
             {
-                angle = Vector3.SignedAngle(m_PlayerTransform.forward,
+                angle = Vector3.SignedAngle(playerForward,
                     element.Key.transform.localPosition.normalized, Vector3.up);
             }
             else
             {
                 Vector3 targetDir = (element.Key.transform.position - m_PlayerTransform.position).normalized;
                 targetDir = Vector3.ProjectOnPlane(targetDir, Vector3.up);
-                Vector3 playerForward = Vector3.ProjectOnPlane(m_PlayerTransform.forward, Vector3.up);
                 angle = Vector3.SignedAngle(playerForward, targetDir, Vector3.up);
 
                 Vector3 directionVector = element.Key.transform.position - m_PlayerTransform.position;
