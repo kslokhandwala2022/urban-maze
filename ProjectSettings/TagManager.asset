@@ -14,11 +14,11 @@ TagManager:
   - UI
   - City
   - Ground
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Pickup
+  - Fixable
+  - NPC
+  - Building
   - 
   - 
   - 
