@@ -5,6 +5,8 @@ using UnityEngine;
 public class CullingMaskManager : MonoBehaviour
 {
     public Camera camera;
+    public Game settings;
+    private int lastNumObjectsFixedVal = 0;
     
     public bool playerVisible = false;
     public bool visitedRoadTilesVisible = false;
@@ -53,5 +55,13 @@ public class CullingMaskManager : MonoBehaviour
     public void UpdateCullingMask()
     {
 
+    }
+
+    void Update()
+    {
+        if (settings.numObjectsFixed > lastNumObjectsFixedVal)
+        {
+            UpdateMapVisibility(settings.numObjectsFixed);
+        }
     }
 }

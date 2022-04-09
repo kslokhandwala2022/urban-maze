@@ -18,6 +18,7 @@ MonoBehaviour:
   playThrough: Community Leader
   coinChance: 70
   fixableChance: 30
+  numObjectsFixed: 0
   seed: 42
   useSeed: 0
   debug: 0
