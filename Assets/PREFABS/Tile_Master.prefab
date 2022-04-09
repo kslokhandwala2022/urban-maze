@@ -545,6 +545,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1462061340560798996}
   - component: {fileID: 1462061340560798999}
+  - component: {fileID: 7933895185557230987}
   m_Layer: 13
   m_Name: Tile_Master
   m_TagString: Untagged
@@ -603,6 +604,19 @@ MonoBehaviour:
   game: {fileID: 11400000, guid: 46bed13fcabbdf64589cf499af31748b, type: 2}
   visitColor: {r: 1, g: 0, b: 0, a: 0}
   locateColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!65 &7933895185557230987
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462061340560798997}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.7, y: 4.7, z: 4.7}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4822222299049789621
 GameObject:
   m_ObjectHideFlags: 0

@@ -111,5 +111,15 @@ public class Tile : MonoBehaviour
         //SetVisited(true);
     }
 
-
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Road.layer = 14;
+            foreach(CityBlock wall in Walls)
+            {
+                wall.gameObject.layer = 14;
+            }
+        }
+    }
 }
