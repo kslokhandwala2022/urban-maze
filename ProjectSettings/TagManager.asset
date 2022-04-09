@@ -19,11 +19,11 @@ TagManager:
   - Fixable
   - NPC
   - Building
-  - 
-  - 
-  - 
-  - 
-  - 
+  - RoadTile
+  - VisitedRoadTile
+  - FixedObject
+  - UnfixedObject
+  - GoalTile
   - 
   - 
   - 
