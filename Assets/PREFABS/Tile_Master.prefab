@@ -232,7 +232,7 @@ GameObject:
   - component: {fileID: 1462061338755918475}
   - component: {fileID: 1462061338755918472}
   - component: {fileID: 1462061338755918473}
-  m_Layer: 7
+  m_Layer: 13
   m_Name: base
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -593,7 +593,6 @@ MonoBehaviour:
   - {fileID: 1462061338602399717}
   Road: {fileID: 1462061338755918479}
   Coin: {fileID: 689677241655256465}
-  Fixable: {fileID: 0}
   FixableLocation: {fileID: 6548573611754478431}
   Fixables:
   - {fileID: 792036318008927999, guid: 236fe5781d41c9a4dab3aa4be5303d1c, type: 3}
@@ -704,7 +703,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3882989318572816928, guid: 6cf10379b9910c0458d653c87fd230fc, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3882989318650728259, guid: 6cf10379b9910c0458d653c87fd230fc, type: 3}
       propertyPath: m_RootOrder
@@ -756,7 +755,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3882989318650728260, guid: 6cf10379b9910c0458d653c87fd230fc, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3882989318650728263, guid: 6cf10379b9910c0458d653c87fd230fc, type: 3}
       propertyPath: m_Enabled
