@@ -12,6 +12,7 @@ public class Fixable : MonoBehaviour
     [SerializeField] string type;
     [SerializeField] int cost;
     [SerializeField] TextMeshPro interactbleText;
+    public GameObject Arrow;
     [SerializeField] Game game;
 
 
