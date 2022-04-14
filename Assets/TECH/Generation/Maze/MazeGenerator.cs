@@ -30,6 +30,10 @@ public class MazeGenerator : MonoBehaviour
         //place player at start square
         player.transform.position = tiles[maze.origin.Pos].transform.position;
         tiles[maze.destination.Pos].EndZone.SetActive(true);
+        foreach (Transform child in tiles[maze.destination.Pos].transform)
+        {
+            child.gameObject.layer = 17;
+        }
         //init player speed
         ui.InitGUI();
 
