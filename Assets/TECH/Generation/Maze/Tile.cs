@@ -124,6 +124,7 @@ public class Tile : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        Debug.Log("trigger entered");
         if (other.CompareTag("Player"))
         {
             Road.layer = 14;
