@@ -8,6 +8,7 @@ public class CullingMaskManager : MonoBehaviour
     public Game settings;
     private int lastNumObjectsFixedVal = 0;
     
+    // Mostly just placeholders, these track if something should be visible but dont actually make it visible
     public bool playerVisible = false; // Layer 8
     public bool visitedRoadTilesVisible = false; // Layer 14
     public bool fixedObjectsVisible = false; // Layer 15
@@ -16,7 +17,7 @@ public class CullingMaskManager : MonoBehaviour
     public bool goalVisible = false; // Layer 17
     public bool entireMapVisible = false; // Layer 13
 
-
+    // Hard-coded values to get the specific culling mask for each combination of layers
     private int cullingmask1 = (16640);
     private int cullingmask2 = (49408);
     private int cullingmask3 = (114944);
@@ -24,10 +25,12 @@ public class CullingMaskManager : MonoBehaviour
     private int cullingmask5 = (246528);
     private int cullingmask6 = (254720);
 
+    // Writes to this value and feeds it to UpdateCullingMask()
     private int currentCullingMask = (0);
     
     
-
+    // Checks # of fixed objects and adjusts the culling mask
+    // on the minimap camera accordingly to make desired elements visible
     public void UpdateMapVisibility(int objectsFixed)
     {
 
@@ -71,11 +74,15 @@ public class CullingMaskManager : MonoBehaviour
         UpdateCullingMask(currentCullingMask);
     }
 
+    // This is called to actually change the culling mask
     public void UpdateCullingMask(int newCullingMask)
     {
         camera.cullingMask |= newCullingMask;
     }
 
+    // Checks constantly to see how many objects have been fixed.
+    // If its a new value, checks to see if it should update visibility.
+    // Far from optimal.
     void Update()
     {
         if (settings.numObjectsFixed > lastNumObjectsFixedVal)
