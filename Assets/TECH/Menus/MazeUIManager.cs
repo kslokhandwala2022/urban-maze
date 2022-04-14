@@ -22,9 +22,14 @@ public class MazeUIManager : MonoBehaviour
     public void InitGUI()
     {
         timeVal = 0;
-        timeStarted = true;
         timer.gameObject.SetActive(true);
         end.SetActive(false);
+    }
+
+    // Called from the main menu start button to start the timer
+    public void StartTrackingTime()
+    {
+        timeStarted = true;
     }
 
     public void UpdateWealth()
