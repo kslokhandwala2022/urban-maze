@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Settings
   m_EditorClassIdentifier: 
   mazeSize: 10
-  playerWealth: 89
+  playerWealth: 0
   playerCommunity: 40
   playThrough: Community Leader
   coinChance: 70
   fixableChance: 30
-  numObjectsFixed: 20
+  numObjectsFixed: 0
   seed: 42
   useSeed: 0
   debug: 0
