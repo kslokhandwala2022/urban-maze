@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Settings
   m_EditorClassIdentifier: 
   mazeSize: 10
-  playerWealth: 5
+  playerWealth: 0
   playerCommunity: 40
   playThrough: Community Leader
   coinChance: 70
