@@ -6,8 +6,12 @@ public class Tile : MonoBehaviour
 {
     public CityBlock[] Walls;
     public GameObject Road;
-    public GameObject Arrow;
+    GameObject Arrow;
     public GameObject Coin;
+    Fixable Fixable;
+    public Transform FixableLocation;
+
+    public GameObject[] Fixables;
 
     public GameObject EndZone;
     public Vector2 Pos;
@@ -51,15 +55,18 @@ public class Tile : MonoBehaviour
         SetWalls(cell.Walls);
         SetVisited(true);
         DistanceFromFinish = cell.DistanceFromOrigin;
-        Arrow.SetActive(game.community > Random.Range(0, 100));
-        Coin.SetActive(game.wealth > Random.Range(0, 100));
+        if (game.fixableChance > Random.Range(0, 100))
+        {
+            ChooseFixable();
+            SetArrow(cell.SolutionDirection);
+        }
+        Coin.SetActive(game.coinChance > Random.Range(0, 100));
         //Debug
         if(game.debug)
         {
             Color before = Road.GetComponent<Renderer>().material.color;
             Road.GetComponent<Renderer>().material.color = new Color(before.r, DistanceFromFinish / 70f, before.b, before.a);
         }
-        SetArrow(cell.SolutionDirection);
     }
 
     public void MarkLocated(bool visit)
@@ -101,6 +108,12 @@ public class Tile : MonoBehaviour
         
         Arrow.transform.rotation = Quaternion.Euler(res);
         //arrow.transform.LookAt(res * 100);
+    }
+
+    public void ChooseFixable()
+    {
+        Fixable = Instantiate( Fixables[ Random.Range(0, Fixables.Length) ], FixableLocation ).GetComponent<Fixable>();
+        Arrow = Fixable.Arrow;
     }
 
     private void Start()

@@ -12,15 +12,15 @@ public class MenuUI : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            game.community = 5;
-            game.wealth = 40;
+            game.playerCommunity = 0;
+            game.playerWealth = 40;
             game.playThrough = "Rich Fool";
             SceneManager.LoadScene("Test_Char");
         }
         if (Input.GetKeyDown(KeyCode.X))
         {
-            game.wealth = 20;
-            game.community = 40;
+            game.playerWealth = 20;
+            game.playerCommunity = 40;
             game.playThrough = "Community Leader";
             SceneManager.LoadScene("Test_Char");
         }

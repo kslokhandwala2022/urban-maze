@@ -11,7 +11,7 @@ public class DFSMaze : IMaze
     const int CORRECT = 2;
 
     public Cell[] grid { get; set; }
-    public int size;
+    public int size { get; set; }
     public Stack<Cell> stack;
 
     //For start and end positions
