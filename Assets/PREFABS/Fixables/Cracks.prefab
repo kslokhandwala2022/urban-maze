@@ -389,6 +389,8 @@ MonoBehaviour:
   interactbleText: {fileID: 6586006385840541063}
   Arrow: {fileID: 6586006384125061710}
   game: {fileID: 11400000, guid: 46bed13fcabbdf64589cf499af31748b, type: 2}
+  clip: {fileID: 8300000, guid: d464b71ba2e66e74186d8ea93db57d6f, type: 3}
+  clip2: {fileID: 8300000, guid: ebc4c5ced2a14f543b8f9eedd6149e11, type: 3}
 --- !u!1 &6586006385791015099
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,7 +3,14 @@ guid: 1b92647e5a11c7f4baab3f29ec163929
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - modelFixed: {instanceID: 0}
+  - modelBroken: {instanceID: 0}
+  - interactbleText: {instanceID: 0}
+  - Arrow: {instanceID: 0}
+  - game: {instanceID: 0}
+  - clip: {fileID: 8300000, guid: d464b71ba2e66e74186d8ea93db57d6f, type: 3}
+  - clip2: {fileID: 8300000, guid: ebc4c5ced2a14f543b8f9eedd6149e11, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

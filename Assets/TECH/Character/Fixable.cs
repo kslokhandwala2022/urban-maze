@@ -38,6 +38,8 @@ public class Fixable : MonoBehaviour
         }
     }
 
+    public AudioClip clip;
+    public AudioClip clip2;
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -46,7 +48,9 @@ public class Fixable : MonoBehaviour
             {
                 if(game.playerWealth >= cost)
                 {
+                    AudioSource.PlayClipAtPoint(clip2, transform.position, .8f);
                     game.playerWealth -= cost;
+                    AudioSource.PlayClipAtPoint(clip, transform.position, .6f);
                     SetFixed();
                 }
             }
@@ -71,7 +75,7 @@ public class Fixable : MonoBehaviour
         modelBroken.SetActive(true);
         modelFixed.SetActive(false);
     }
-
+    
     void SetFixed()
     {
         game.numObjectsFixed++;
