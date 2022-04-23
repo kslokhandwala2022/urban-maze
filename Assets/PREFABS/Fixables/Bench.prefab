@@ -95,7 +95,7 @@ MonoBehaviour:
   modelFixed: {fileID: 792036318926137227}
   modelBroken: {fileID: 5034624008408283178}
   type: Bench<br>
-  cost: 1
+  cost: 5
   interactbleText: {fileID: 792036318865601207}
   Arrow: {fileID: 792036317091419518}
   game: {fileID: 11400000, guid: 46bed13fcabbdf64589cf499af31748b, type: 2}

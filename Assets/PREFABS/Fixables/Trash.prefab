@@ -427,7 +427,7 @@ MonoBehaviour:
   modelFixed: {fileID: 5945099639312980416}
   modelBroken: {fileID: 2135356679453492833}
   type: Trash<br>
-  cost: 1
+  cost: 5
   interactbleText: {fileID: 5945099639361391868}
   Arrow: {fileID: 5945099640800029493}
   game: {fileID: 11400000, guid: 46bed13fcabbdf64589cf499af31748b, type: 2}

@@ -385,7 +385,7 @@ MonoBehaviour:
   modelFixed: {fileID: 6586006385791015099}
   modelBroken: {fileID: 1460647185763780378}
   type: Cracks<br>
-  cost: 1
+  cost: 5
   interactbleText: {fileID: 6586006385840541063}
   Arrow: {fileID: 6586006384125061710}
   game: {fileID: 11400000, guid: 46bed13fcabbdf64589cf499af31748b, type: 2}

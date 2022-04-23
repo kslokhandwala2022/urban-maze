@@ -312,7 +312,7 @@ MonoBehaviour:
   modelFixed: {fileID: 820168746158170381}
   modelBroken: {fileID: 4918669839162834604}
   type: Lamp<br>
-  cost: 1
+  cost: 5
   interactbleText: {fileID: 820168746237654065}
   Arrow: {fileID: 820168747944711160}
   game: {fileID: 11400000, guid: 46bed13fcabbdf64589cf499af31748b, type: 2}
