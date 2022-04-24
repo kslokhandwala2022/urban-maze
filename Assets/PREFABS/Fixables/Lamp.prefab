@@ -932,6 +932,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Particle FX_ Broken Fixable
       objectReference: {fileID: 0}
+    - target: {fileID: 5767011681794236127, guid: f040bad06941e7b4f91d32cf95f6a1ed, type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f040bad06941e7b4f91d32cf95f6a1ed, type: 3}
 --- !u!1001 &4972534752856845341
