@@ -17,7 +17,7 @@ public class ThirdPersonMovement : MonoBehaviour
     //Game
     [Header("Game")]
     public Game game;
-    public float wealthToSpeed = 0.1f;
+    public SkinnedMeshRenderer playerMesh;
 
     //animation
     [Header("Health Settings")]
@@ -48,8 +48,13 @@ public class ThirdPersonMovement : MonoBehaviour
 
             //move in direction of player orientation
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            playerMesh.material.color = game.getPlayerColor();
+            playerMesh.material.SetColor("_EmissionColor", game.getPlayerEmmisiveColor());
+
+            //game.getPlayerColor();
             // Vector3 move = moveDir.normalized * (speed + (wealthToSpeed * game.playerWealth));
-            Vector3 move = moveDir.normalized * (speed);
+            float currentSpeed = speed * game.getSpeedMultiplier(); 
+            Vector3 move = moveDir.normalized * (currentSpeed);
             controller.Move(move * Time.deltaTime);
 
             animator.SetBool("Moving", move.magnitude > movingThreshold);

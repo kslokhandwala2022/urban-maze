@@ -13,12 +13,17 @@ MonoBehaviour:
   m_Name: Settings
   m_EditorClassIdentifier: 
   mazeSize: 10
-  playerWealth: 0
+  playerWealth: 31
   playerCommunity: 40
   playThrough: Community Leader
   coinChance: 70
   fixableChance: 30
-  numObjectsFixed: 0
+  numObjectsFixed: 23
   seed: 42
   useSeed: 0
   debug: 0
+  speedTiers: 5
+  speedWealth: 7
+  speedMultiplier: 1.5
+  poorColor: {r: 0.2830189, g: 0.2830189, b: 0.2830189, a: 0}
+  richColor: {r: 1, g: 0.6, b: 0, a: 1}

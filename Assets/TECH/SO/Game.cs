@@ -6,7 +6,7 @@ using UnityEngine;
 public class Game : ScriptableObject
 {
     public int mazeSize;
-    public float playerWealth;
+    public int playerWealth;
     public float playerCommunity;
     public string playThrough;
 
@@ -17,4 +17,31 @@ public class Game : ScriptableObject
     public int seed;
     public bool useSeed;
     public bool debug = true;
+
+    public int speedTiers;
+    public int speedWealth;
+    public float speedMultiplier;
+
+    public Color poorColor;
+    public Color richColor;
+
+    public int getSpeedTier()
+    {
+        return Mathf.Min(playerWealth / speedWealth, speedTiers);
+    }
+
+    public float getSpeedMultiplier()
+    {
+        return Mathf.Pow(speedMultiplier, getSpeedTier());
+    }
+
+    public Color getPlayerColor()
+    {
+        return Color.Lerp(poorColor, richColor, (float)getSpeedTier()/speedTiers);
+    }
+
+    public Color getPlayerEmmisiveColor()
+    {
+        return Color.Lerp(poorColor, richColor, (float)getSpeedTier() / speedTiers);
+    }
 }

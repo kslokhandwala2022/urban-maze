@@ -18,6 +18,11 @@ public class MazeGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        //game settings
+        game.playerWealth = 0;
+
+
         maze = new DFSMaze();
         if( game.debug )
         {
