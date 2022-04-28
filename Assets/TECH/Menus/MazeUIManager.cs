@@ -23,6 +23,9 @@ public class MazeUIManager : MonoBehaviour
     public GameObject tierImageParent;
     public GameObject coinImage;
     public Image[] coinImages;
+    public GameObject mainMenu;
+    public GameObject newRunButton;
+    public GameObject resumeRunButton;
 
     private float timeVal;
     private string timerString;
@@ -64,12 +67,12 @@ public class MazeUIManager : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Space))
         {
-            ReturntoMenu();
+            ReturntoMenu(true);
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            ReturntoMenu();
+            ReturntoMenu(false);
         }
     }
 
@@ -109,8 +112,19 @@ public class MazeUIManager : MonoBehaviour
     }
 
 
-    public void ReturntoMenu()
+    public void ReturntoMenu(bool isEnd)
     {
-        SceneManager.LoadScene("Menu");
+        if (isEnd)
+        {
+            // reset scene if you've finished the maze
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        else
+        {
+            // pause at the menu if you have not finished the maze
+            mainMenu.SetActive(true);
+            newRunButton.SetActive(false);
+            resumeRunButton.SetActive(true);
+        }
     }
 }
