@@ -7,6 +7,7 @@ public class Wealth : MonoBehaviour
 
     public Game game;
     private Animator animator;
+    public ParticleSystem coinParticles;
 
 
     public void Start()
@@ -16,6 +17,8 @@ public class Wealth : MonoBehaviour
 
     public void updateSpeed() {
         game.playerWealth++;
+        coinParticles.Stop();
+        coinParticles.Play();
     }
 
     private void RevertPicking() { 
