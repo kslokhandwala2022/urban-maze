@@ -90,7 +90,8 @@ public class MazeUIManager : MonoBehaviour
         end.SetActive(true);
         timeStarted = false;
         endContent.text = "Total Time: " + TimeToString(timeVal) + 
-            "\nPlayMode: " + game.playThrough;
+            "\nWealth Kept: " + game.playerWealth +
+            "\nWealth Donated: " + (game.numObjectsFixed * 5);
     }
 
     private string TimeToString(float time)
